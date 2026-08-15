@@ -1,0 +1,149 @@
+
+
+Dashboard · HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Student Task Manager</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+ 
+  <header class="navbar">
+    <div class="logo">Student Task Manager</div>
+    <div class="nav-user">
+      <span id="user-name" class="user-name">Student</span>
+      <button id="logout-btn" class="btn btn-login">Logout</button>
+    </div>
+  </header>
+ 
+  <main class="dashboard">
+ 
+    <section class="welcome-section">
+      <h1 id="welcome-message">Welcome back!</h1>
+      <p>Here's an overview of your tasks.</p>
+    </section>
+ 
+    <section class="stats-section">
+      <div class="stat-card" id="total-tasks-card">
+        <h2 id="total-tasks-count">0</h2>
+        <p>Total Tasks</p>
+      </div>
+      <div class="stat-card" id="completed-tasks-card">
+        <h2 id="completed-tasks-count">0</h2>
+        <p>Completed Tasks</p>
+      </div>
+      <div class="stat-card" id="pending-tasks-card">
+        <h2 id="pending-tasks-count">0</h2>
+        <p>Pending Tasks</p>
+      </div>
+    </section>
+ 
+    <section class="task-controls">
+      <button id="add-task-btn" class="btn btn-primary">Add Task</button>
+ 
+      <input
+        type="text"
+        id="search-input"
+        class="search-input"
+        placeholder="Search tasks..."
+      >
+ 
+      <select id="status-filter" class="filter-select">
+        <option value="all">All Status</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+ 
+      <select id="subject-filter" class="filter-select">
+        <option value="all">All Subjects</option>
+      </select>
+    </section>
+ 
+    <section class="task-list-section">
+      <div id="task-list" class="task-list">
+        <!-- Task items will be inserted here by JavaScript -->
+        <p id="no-tasks-message" class="no-tasks-message">No tasks yet. Click "Add Task" to get started.</p>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <div id="task-form-overlay" class="task-form-overlay" hidden>
+    <div class="task-form-card">
+      <h2 id="task-form-title">Add Task</h2>
+ 
+      <div id="task-form-error" class="form-message error-message" hidden></div>
+ 
+      <form id="task-form" novalidate>
+        <input type="hidden" id="task-id" name="task-id">
+ 
+        <div class="form-group">
+          <label for="task-title">Task Title</label>
+          <input
+            type="text"
+            id="task-title"
+            name="task-title"
+            placeholder="Enter task title"
+            required
+          >
+        </div>
+ 
+        <div class="form-group">
+          <label for="task-subject">Subject</label>
+          <input
+            type="text"
+            id="task-subject"
+            name="task-subject"
+            placeholder="e.g. Math, Science"
+            required
+          >
+        </div>
+ 
+        <div class="form-group">
+          <label for="task-due-date">Due Date</label>
+          <input
+            type="date"
+            id="task-due-date"
+            name="task-due-date"
+            required
+          >
+        </div>
+ 
+        <div class="task-form-actions">
+          <button type="submit" id="save-task-btn" class="btn btn-primary">Add Task</button>
+          <button type="button" id="cancel-task-btn" class="btn btn-register">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+ 
+  <template id="task-item-template">
+    <div class="task-item" data-task-id="">
+      <div class="task-info">
+        <h3 class="task-title"></h3>
+        <p class="task-subject"></p>
+        <p class="task-due-date"></p>
+        <span class="task-status"></span>
+      </div>
+      <div class="task-actions">
+        <button class="btn task-complete-btn">Complete</button>
+        <button class="btn task-edit-btn">Edit</button>
+        <button class="btn task-delete-btn">Delete</button>
+      </div>
+    </div>
+  </template>
+ 
+  <footer class="footer">
+    <p>&copy; 2026 Student Task Manager. Made for students, by a student.</p>
+  </footer>
+ 
+  <script src="js/auth.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
+ 
