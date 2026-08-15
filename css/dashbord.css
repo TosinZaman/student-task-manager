@@ -2,7 +2,9 @@
    Student Task Manager - Dashboard Stylesheet
    (dashboard.html)
    ========================================= */
-
+[hidden] {
+  display: none !important;
+}
 /* -----------------------------------------
    1. Dashboard Layout
 ----------------------------------------- */
